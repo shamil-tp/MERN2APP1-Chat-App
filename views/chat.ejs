@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>chat</title>
+    <style>
+        body {
+            /* Layer 1: A semi-transparent radial glow that sits on top */
+            background-image: radial-gradient(at top left, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                /* Layer 2: A diagonal base gradient using your colors */
+                linear-gradient(135deg, #0a1828, #141E30);
+
+            /* These properties are crucial to prevent repeating */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .white__bg {
+            background-color: rgba(255, 255, 255, 0.056);
+            width: 100%;
+            height: 90vh;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .list__bg {
+            background-color: #4e71b360;
+
+        }
+
+        .receiver__title {
+            background-color: rgb(68, 158, 161);
+            color: white;
+            width: 100%;
+            border-radius: 15px 15px 0 0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .circle {
+            background-color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        #texts__container{
+            overflow-y: scroll;
+            width: 100%;
+            height: 74.5vh;
+            
+        }
+        .chat1 {
+            background-color: #1c3b76;
+            border-radius: 15px 15px 15px 0;
+            width: max-content;
+        }
+
+        .chat2 {
+            background-color: #3aa1ba;
+            border-radius: 15px 15px 0 15px;
+            width: max-content;
+        }
+
+        .text__space {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* .text__space input{
+            width: 100%;
+        } */
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="offset-3 col-6 white-bg">
+                <div class="row">
+                    <div class="col-12 text-center text-white-50 mt-3">
+                        <h1>Messenger Node App</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="people__table--container">
+                        <div class="white__bg text-white" id="list__container">
+                            <div class="receiver__title mb-2">
+                                <div class="circle mr-1" style="display: inline-block;"></div>
+                                <h2 id="receiver__title--name" style="display: inline-block;"><%= receiver %></h2>
+                            </div>
+
+                            <div id="texts__container">
+                                <% messages.forEach((item)=> { %>
+                                <% if (item.sender == users && item.receiver == receiver) { %>
+                                    <div class="chat2 px-2 ml-auto mr-1">
+                                <p class="message">
+                                    <%= item.text %>
+                                </p>
+                                <p><%= item.sender %></p>
+                            </div> 
+                              <%  } else if (item.sender == receiver && item.receiver == users) { %> 
+                                    <div class="chat1 px-2 ml-1">
+                                <p class="message">
+                                    <%= item.text %>
+                                </p>
+                                <p><%= item.sender %></p>
+                            </div> 
+                              <%  } %>
+                            <% }) %>
+                            </div>
+                            <!-- 
+                            <div class="chat1 px-2 ml-1">
+                                <p class="message">
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                                <p style="text-align: right;">name</p>
+                            </div>
+                            <div class="chat2 px-2 ml-auto mr-1">
+                                <p class="message">
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                                <p>name</p>
+                            </div> 
+                            -->
+                            
+                            
+                            <form class="text__space" action="/message" method="post">
+                                <!-- <input type="text"> -->
+                                <div class="input-group">
+                                    <input type="hidden" name="id" id="uuid" value="<%=Date.now()%>">
+                                    <input type="hidden" name="receiver" id="receiver" value="<%=receiver%>">
+                                    <input type="hidden" name="sender" id="sender" value="<%=users%>">
+                                    <input type="text" class="form-control" placeholder="Recipient's username"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        style="border-radius: 0 0 0 15px;" name="text">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info" style="border-radius: 0 0 15px 0;"
+                                            type="submit">send</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

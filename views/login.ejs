@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>login</title>
+    <style>
+        body {
+            background: url("/register/d2a77609f5d97b9081b117c8f699bd37.jpg");
+            /* background-color: rgb(50, 50, 50); */
+            background-repeat: repeat;
+            background-size: contain;
+            color: rgb(0, 0, 0);
+        }
+
+        .outline-text {
+            color: rgb(58, 137, 197);
+            font-size: 5rem;
+            font-weight: 900;
+            /* The color of the text */
+            text-shadow:
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
+        }
+
+        .glass-effect {
+            background-color: rgba(255, 255, 255, 0.074);
+            /* White with 20% opacity */
+            backdrop-filter: blur(10px);
+            /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari support */
+            border-radius: 10px;
+            /* Rounded corners for a softer look */
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            /* Add a soft shadow */
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-12">
+                <h1 class="text-center outline-text">Login</h1>
+            </div>
+            <div class="col-4 offset-4 rounded glass-effect">
+                <form method="post" action="/login">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">UserName</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="userName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                        <div class="col-12">
+                            <p>Already have an account? <a href="http://192.168.29.178:3000/register">Register</a></p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
