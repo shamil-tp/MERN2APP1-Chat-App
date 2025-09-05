@@ -1,0 +1,12 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "responsive chat app using express, cookies, MongoDB",
+  "license": "ISC",
+  "author": "shamil",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index"
+  }
+}
