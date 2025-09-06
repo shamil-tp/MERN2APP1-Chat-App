@@ -13,3 +13,5 @@ router
 router
     .route('/logout')
     .get(Logout)
+
+module.exports = router

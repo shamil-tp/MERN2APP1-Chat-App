@@ -11,3 +11,5 @@ router
 router
     .route('/message')
     .post(Message)
+
+module.exports = router
