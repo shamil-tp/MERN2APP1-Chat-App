@@ -8,5 +8,12 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon index"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongodb": "^6.19.0",
+    "nodemon": "^3.1.10"
   }
 }
