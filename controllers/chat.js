@@ -1,6 +1,4 @@
-const { MongoClient } = require('mongodb')
-const uri = `mongodb+srv://shamil:urcx5298@mysnapgram.zq2yd.mongodb.net/`
-const client = new MongoClient(uri)
+
 
 exports.Home = async (req, res) => {
     const userCollection = client.db('nodeMessenger').collection('users')

@@ -4,9 +4,7 @@ const cookieParser = require("cookie-parser")
 
 const app = express()
 
-const PORT = 3000
-const HOSTNAME = "192.168.29.178"
-const uri = `mongodb+srv://shamil:urcx5298@mysnapgram.zq2yd.mongodb.net/`
+
 
 const client = new MongoClient(uri)
 
