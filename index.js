@@ -30,13 +30,12 @@ async function connectMongodb() {
 
 app.get('/', async (req, res) => {
     console.log(req.cookies)
-    console.log(req.cookies)
-    console.log(req.cookies)
+    console.log(req?.cookies?.user?.userName)
     const userCollection = client.db('nodeMessenger').collection('users')
     const users = await userCollection.find({}).toArray()
-    console.log(users)
-    const user = await userCollection.findOne({ userName: req.cookies.user.userName })
-    if (!req.cookies.user.userName) {
+    // console.log(users)
+    // const user = await userCollection.findOne({ userName: req.cookies.user.userName })
+    if (!req?.cookies?.user?.userName) {
         return res.redirect("/login")
     }
     // return res.sendFile(__dirname+"/html/people.html")
@@ -48,19 +47,19 @@ app.get('/chat', async (req, res) => {
     const messageCollection = client.db('nodeMessenger').collection('messenger')
     const query = {
         $or: [
-            { sender: req.query.user, receiver: req.query.rec },
-            { sender: req.query.rec, receiver: req.query.user }
+            { sender: req.cookies.user.userName, receiver: req.query.rec },
+            { sender: req.query.rec, receiver: req.cookies.user.userName }
         ]
     };
     const messages = (await messageCollection.find(query).toArray())
     // messages = messages
 
-    if (!(req.query.user && req.query.rec)) {
+    if (!(req.cookies.user.userName && req.query.rec)) {
         return res.redirect("/login")
     }
 
     // return res.sendFile(__dirname+"/html/chat.html")
-    return res.render('chat', { messages: messages, users: req.query.user, receiver: req.query.rec })
+    return res.render('chat', { messages: messages, users: req.cookies.user.userName, receiver: req.query.rec })
 
 })
 
@@ -70,7 +69,7 @@ app.post('/message', async (req, res) => {
     const result = await messageCollection.insertOne(req.body)
     // messages.push(req.body)
 
-    return res.redirect(`/chat?user=${req.body.sender}&rec=${req.body.receiver}`)
+    return res.redirect(`/chat?rec=${req.body.receiver}`)
 })
 
 app.get('/register', (req, res) => {
@@ -108,6 +107,10 @@ app.post('/login', async (req, res) => {
         return res.redirect('/login')
     }
     return res.redirect(`/`)
+})
+
+app.get('/logout',(req,res)=>{
+    return res.clearCookie('user').redirect('/login')
 })
 
 app.get('/getusers', (req, res) => {
