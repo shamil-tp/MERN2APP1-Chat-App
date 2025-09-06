@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>chat</title>
     <style>
         body {
@@ -91,7 +92,9 @@
                     <div class="people__table--container">
                         <div class="white__bg text-white" id="list__container">
                             <div class="receiver__title mb-2">
-                                <div class="circle mr-1" style="display: inline-block;"></div>
+                                <div class="circle mr-1 d-flex justify-content-center align-items-center" style="display: inline-block;">
+                                    <i class="bi bi-person-circle" style="font-size: 2rem; color: #003a7df1;"></i>
+                                </div>
                                 <h2 id="receiver__title--name" style="display: inline-block;"><%= receiver %></h2>
                             </div>
 
@@ -136,9 +139,9 @@
                                     <input type="hidden" name="id" id="uuid" value="<%=Date.now()%>">
                                     <input type="hidden" name="receiver" id="receiver" value="<%=receiver%>">
                                     <input type="hidden" name="sender" id="sender" value="<%=users%>">
-                                    <input type="text" class="form-control" placeholder="Recipient's username"
+                                    <input type="text" class="form-control" placeholder="Type Message here"
                                         aria-label="Recipient's username" aria-describedby="basic-addon2"
-                                        style="border-radius: 0 0 0 15px;" name="text">
+                                        style="border-radius: 0 0 0 15px; height:8vh;" name="text">
                                     <div class="input-group-append">
                                         <button class="btn btn-info" style="border-radius: 0 0 15px 0;"
                                             type="submit">send</button>
