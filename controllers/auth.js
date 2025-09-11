@@ -1,4 +1,4 @@
-
+const {client} = require('../config/db')
 
 
 exports.getRegisterPage = (req, res) => res.render('register')

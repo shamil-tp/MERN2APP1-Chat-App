@@ -1,4 +1,4 @@
-
+const {client} = require('../config/db')
 
 exports.Home = async (req, res) => {
     const userCollection = client.db('nodeMessenger').collection('users')

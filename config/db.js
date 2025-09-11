@@ -15,4 +15,4 @@ async function connectMongodb() {
     
 }
 
-
+module.exports = {client , connectMongodb};
