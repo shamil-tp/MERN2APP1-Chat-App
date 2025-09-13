@@ -2,6 +2,7 @@ const express = require("express")
 // const { MongoClient } = require('mongodb')
 const {connectMongodb} = require('./config/db')
 const cookieParser = require("cookie-parser")
+const checkCookie = require('./middleware/checkCookie')
 const authRouter = require('./routes/auth')
 const chatRouter = require('./routes/chat')
 
@@ -17,8 +18,8 @@ app.use(cookieParser())
 
 app.set('view engine', 'ejs')
 
-app.use(authRouter)
-app.use(chatRouter)
+app.use('/',authRouter)
+app.use('/',checkCookie,chatRouter)
 
 
 app.listen(PORT, () => {
